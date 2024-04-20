@@ -1,0 +1,5 @@
+name: LG100MS
+version: '${project.version}'
+main: fr.yanis.lg100ms.LGMSMain
+load: STARTUP
+softdepend:  [WereWolfPlugin, PlaceholderAPI, SkinsRestorer, BetterNick]

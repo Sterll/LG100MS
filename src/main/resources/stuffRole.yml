@@ -1,0 +1,19 @@
+lg100ms.role.dictator.display:
+  0:
+    ==: org.bukkit.inventory.ItemStack
+    type: TNT
+    amount: 2
+  1:
+    potion_data: 16393
+    item:
+      ==: org.bukkit.inventory.ItemStack
+      type: POTION
+lg100ms.role.black_cat.display:
+  0:
+    ==: org.bukkit.inventory.ItemStack
+    type: ENCHANTED_BOOK
+    meta:
+      ==: ItemMeta
+      meta-type: ENCHANTED
+      stored-enchants:
+        PROTECTION_FALL: 2

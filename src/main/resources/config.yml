@@ -1,0 +1,27 @@
+mysql:
+  dbName: "100ms"
+  host: "quantum-network.fr"
+  port: 3306
+  user: "werewolf"
+  password: "IFo[(w8N35RFRNOP"
+command_victory:
+  villager:
+    effect @a nausea 10 10:
+      delay: 10 #io seconds
+    hub @a:
+      delay: 10 #io seconds
+  werewolf:
+    effect @a blindness 10 10:
+      delay: 10 #io seconds
+    hub @a:
+      delay: 10 #io seconds
+  neutral:
+    effect @a blindness 10 10:
+      delay: 10 #io seconds
+    hub @a:
+      delay: 10 #io seconds
+  lover:
+    effect @a blindness 10 10:
+      delay: 10 #io seconds
+    hub @a:
+      delay: 10 #io seconds

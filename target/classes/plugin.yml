@@ -1,0 +1,5 @@
+name: LG100MS
+version: '1.0'
+main: fr.yanis.lg100ms.LGMSMain
+load: STARTUP
+softdepend:  [WereWolfPlugin, PlaceholderAPI, SkinsRestorer, BetterNick]

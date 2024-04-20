@@ -1,0 +1,103 @@
+{
+  "lg100ms":{
+    "lg100ms": "LGAddon 100ms",
+    "command":{
+      "main": {
+        "display": "100ms",
+        "description": "Commande principale du plugin"
+      }
+    },
+    "role": {
+      "dictator":{
+        "display": "Dictateur",
+        "description": "Une fois dans la partie, vous pouvez choisir une personne qui recevra les votes en annulant les votes des autres joueurs, après l’utilisation de votre pouvoir la sanction des votes sera plus sévère jusqu’à la fin de la partie.",
+        "ejector_message": "Vous pouvez désigner un joueur qui recevra les votes §b/ww ejecter§r vous avez §b&timer&",
+        "used_ejector": "Vous avez déjà utilisé votre pouvoir",
+        "vote_result_ejector": "§b&player&§f a été désigné par le dictateur, lui et les prochains votés auront poison pendant 20 secondes",
+        "command_success": "Vous avez désigné §b&player&§f qui recevra les votes",
+        "command": "ejecter",
+        "items": "2 TNT et une potion de Force"
+      },
+      "baron": {
+        "display": "Baron",
+        "description": "Vous êtes Baron vous réunissez les neutres dans la même équipe que vous, votre objectif est de tuer les villageois et les loups-garous.\nPour ce faire, vous avez Force de jour et résistance de nuit mais vous disposez d’un cœur maximum en moins."
+      },
+      "black_cat": {
+        "display": "Chat Noir",
+        "description": "Au début de la nuit vous disposez d’un pouvoir vous permettant d’essayer de trouver votre maîtresse (Sorcière). Si la sorcière passe à côté de vous, vous aurez l'information qu'elle était proche §b5§f minutes plus tard. \nLa trouvez-vous permettra de vous transformez si la sorcière vient à mourir. \nAu début de la nuit, vous déclencherez une poisse sur une personne choisit aléatoirement autour de vous (70 Blocs) (20%Village, 25%Neutre, 55%Lg) qui recevra Slowness pendant 2 minutes ou Blindness pendant 30 secondes",
+        "description_hargneux": "Vous êtes Hargneux \nVous perdez vos pouvoirs de Chat Noir. Vous devez venger votre maîtresse (Sorcière) pour ce faire vous recevez 3 pseudos dont celui qui a tué la Sorcière, vous et le meurtrier devenez ennemi et un de vous deux doit mourir. Si vous réussissez à tuer le meurtrier de la Sorcière vous gagnez Résistance de Jour et nofall permanent. Si vous tuez une autre personne de votre liste et que cette personne est dans le camp village, vous ne pourrez plus gagner votre pouvoir en vengeant votre maîtresse. \nVoici la liste des suspects : §b&list&",
+        "items": "Livre Feather Falling 2",
+        "command": "soso",
+        "message": {
+          "night_begin": "La nuit tombe, vous pouvez chercher votre maîtresse (Sorcière) §b/ww soso §f(pseudo) vous avez §b3 minutes",
+          "soso_found": "Vous venez de trouver votre maître !",
+          "not_found": "Le joueur désigné n’est pas celui que vous recherchez",
+          "soso_killed": "Votre maîtresse vient de se faire assassiner ! Votre humeur est en train de changer.",
+          "soso_killed_pve": "Votre maîtresse est mort de cause naturelle ! Vous restez Chat Noir.",
+          "form_tough_cat": "Vous devenez Hargneux. §b/ww role§r pour en savoir plus.",
+          "tough_cat_alert_killer": "Le Chat Hargneux est à vos trousses, un seul de vous deux peut rester en vie !",
+          "cat_no_luck": "La présence du Chat Noir vous porte la poisse !",
+          "tough_cat_use_false": "Votre Maître n’a pas pu être vengé, vous ne gagnez rien !",
+          "tough_cat_use_true": "Vous avez vengé votre maîtresse, vous gagnez Résistance de jour et no fall !",
+          "tough_cat_use_fail_village": "Vous vous êtes trompé de cible et elle était villageoise, vous ne pouvez plus gagner de pouvoir (vous restez malgré tous ennemi et vous devez tuer le meurtrier de votre maîtresse (Sorcière) !",
+          "tough_cat_use_fail_other": "Vous avez tuer un ennemi du village mais ce n’était pas le meurtrier de votre maîtresse (Sorcière), vous pouvez encore vous vengez.",
+          "soso_detect": "Vous avez croisé la Sorcière il y a peu !",
+          "suspect_list": "Voici la liste des suspects : §b&list&"
+        }
+      },
+      "chameleon_werewolf":{
+        "display": "Loup Garou Caméléon",
+        "description": "La nuit, vous pouvez faire la commande §b/ww camouflage§f pour prendre l'apparence d'un autre joueur.\nSi un pouvoir est utilisé sur le joueur en qui vous avez l'apparence, vous obtiendrez le pouvoir à sa place. Si vous avez l'apparence d'un autre joueur, les rôles à information vous voient comme ce joueur",
+        "command": "camouflage",
+        "lore": "§cSKINRESTORER EST NECESSAIRE POUR CE ROLE",
+        "message": {
+          "ability_disabled": "Vous perdez l'apparence de §b&pseudo&",
+          "ability_enable": "Vous pouvez changer d'apparence avec la commande §b/ww camouflage",
+          "ability_alert": "Vous perdrez l'apparence de §b&pseudo&§f dans 30 secondes",
+          "ability_use": "Vous prenez l'apparence de §b&pseudo&§f. Faites à nouveau /ww camouflage pour retirer votre camouflage",
+          "already_transformed": "Vous avez déjà pris l'apparence d'un joueur",
+          "not_transformed": "Vous n'avez pas pris l'apparence d'un joueur",
+          "right_click": "Vous êtes proche du Loup Garou Caméléon"
+        }
+      }
+    },
+    "scenario": {
+      "execute_command_on_game_stop": "ExecuteCommandOnGameStop",
+      "auto_resize_group":{
+        "display": "Auto Resize Group",
+        "config": {
+          "group4_playerlimit": "Nombre de joueurs §bmaximum §fpour que le groupe soit de 4 ( §b&number& joueurs §f)",
+          "group3_playerlimit": "Nombre de joueurs §bmaximum §fpour que le groupe soit de 3 ( §b&number& joueurs §f)",
+          "group4_villagerpercentage": "Pourcentage de villageois §bmaximum §fpour que le groupe soit de 4 ( §b&number&% §f)",
+          "group3_villagerpercentage": "Pourcentage de villageois §bmaximum §fpour que le groupe soit de 3 ( §b&number&% §f)",
+          "group4_werewolfpercentage": "Pourcentage de loup garou §bminimum §fpour que le groupe soit de 4 ( §b&number&% §f)",
+          "group4_commonpercentage": "Pourcentage de loup garou et de neutre §bmaximum §fpour que le groupe soit de 4 ( §b&number&% §f)",
+          "group3_commonpercentage": "Pourcentage de loup garou et de neutre §bmaximum §fpour que le groupe soit de 3 ( §b&number&% §f)"
+        }
+      },
+      "nocamp": {
+        "display": "No Camp",
+        "message": {
+          "teleported": "Vous avez été téléporté parce que vous n'avez pas respecter les goupes pendant trop longtemps"
+        },
+        "config":{
+          "rayon": "Changer le rayon dans lequel un joueur est considéré comme dans un groupe §b&number& blocks",
+          "rayon_attacked": "Changer le rayon dans lequel un joueur est considéré comme dans un groupe lorsqu'il est attaqué §b&number& blocks",
+          "sendtitle": "Envoyer un titre au joueur lorsqu'il dépasse ce compteur §b&number& au compteur",
+          "timemin": "Temps minimum avant la téléportation §b&number&s",
+          "intervalle": "Interval avant la téléportation §b&number&s ( ajouter au temps minimum )"
+        }
+      }
+    },
+    "check":{
+      "not_yourself": "Vous ne pouvez pas vous choisir vous même",
+      "offline_player": "Le joueur est hors ligne",
+      "player_not_found": "Le joueur n'existe pas, s'est déconnecté, est dans le couloir de la mort ou est déjà mort",
+      "cant_use": "Vous avez déjà utiliser votre pouvoir ou vous ne pouvez pas encore l'utilisé"
+    },
+    "vote": {
+      "no_result": "Aucun joueur n'a été voté",
+      "result": "§b&player&§f est celui qui a recueilli le plus de votes : §b&votes&§r. Il a poison pendant 20 secondes"
+    }
+  }
+}
