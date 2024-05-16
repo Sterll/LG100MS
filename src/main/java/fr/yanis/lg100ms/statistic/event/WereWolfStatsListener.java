@@ -30,7 +30,7 @@ public class WereWolfStatsListener implements Listener {
         LGMSMain.getInstance().getGameStats().setStarted(false);
         if(Bukkit.getPluginManager().getPlugin("WereWolfPlugin") == null) return;
         task.cancel();
-        if(!Command100ms.devMode){
+        if(!LGMSMain.getInstance().isDev()){
             if(LGMSMain.getInstance().getGameStats().getPlayers().size() < 18) return;
             if(LGMSMain.getInstance().getGameStats().getTimer() < 1800) return;
         }

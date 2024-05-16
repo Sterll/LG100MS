@@ -210,9 +210,9 @@ public class DBUtils {
 
     public HashMap<Integer, String> getTop3WinRate(){
         HashMap<Integer, String> players = new HashMap<>();
-        players.put(1, "");
-        players.put(2, "");
-        players.put(3, "");
+        players.put(1, "null:0.0");
+        players.put(2, "null:0.0");
+        players.put(3, "null:0.0");
         try {
             final Connection connection = DatabaseManager.WereWolfBDD.getDatabaseAccess().getConnection();
             final PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Player");
@@ -233,12 +233,12 @@ public class DBUtils {
                 if (winRate > first){
                     players.replace(3, players.get(2));
                     players.replace(2, players.get(1));
-                    players.replace(1, resultSet.getString("uuid") + ":" + winRate);
+                    players.replace(1, resultSet.getString("pseudo") + ":" + winRate);
                 } else if (winRate > second){
                     players.replace(3, players.get(2));
-                    players.replace(2, resultSet.getString("uuid") + ":" + winRate);
+                    players.replace(2, resultSet.getString("pseudo") + ":" + winRate);
                 } else if (winRate > third){
-                    players.replace(3, resultSet.getString("uuid") + ":" + winRate);
+                    players.replace(3, resultSet.getString("pseudo") + ":" + winRate);
                 }
             }
 

@@ -31,7 +31,7 @@ public class ScenarioGui implements InventoryProvider {
         contents.set(1, 1, ClickableItem.of(new ItemBuilder(Material.GOLDEN_APPLE).setDisplayName("§9NoCamp").build(), e -> NoCampGui.INVENTORY.open(player)));
         contents.set(1, 3, ClickableItem.of(new ItemBuilder(Material.BEACON).setDisplayName("§9AutoResizeGroup").build(), e -> AutoResizeGroupGui.INVENTORY.open(player)));
 
-        contents.set(1,7, ClickableItem.of(new ItemBuilder(Material.BARRIER).setDisplayName("§cRetour").build(), e -> ScenarioGui.INVENTORY.open(player)));
+        contents.set(1,7, ClickableItem.of(new ItemBuilder(Material.BARRIER).setDisplayName("§cRetour").build(), e -> MainGui.INVENTORY.open(player)));
     }
 
     @Override

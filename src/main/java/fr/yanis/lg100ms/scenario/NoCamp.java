@@ -73,53 +73,57 @@ public class NoCamp extends ListenerWerewolf {
             timer.put(playerWW, false);
         });
         taskSecond = Bukkit.getScheduler().runTaskTimerAsynchronously(LGMSMain.getInstance(), () -> {
-            if(!activate) return;
-            LGMSMain.getInstance().getPlayerAlive(getGame()).forEach(playerWW -> {
-                if (playerWW == null) return;
-                if(Bukkit.getPlayer(playerWW.getUUID()) == null) return;
-                if(!playerWW.isState(StatePlayer.ALIVE)) return;
-                if((!Bukkit.getPlayer(playerWW.getUUID()).isSneaking() || !checkBlocksAbovePlayer(Bukkit.getPlayer(playerWW.getUUID()))) && !Bukkit.getPlayer(playerWW.getUUID()).hasPotionEffect(PotionEffectType.INVISIBILITY)){
-                    createGroupOfPlayer(playerWW, getGame().getConfig().getValue(NoCamp.KEY + ".config.rayon"));
-                    ArrayList<IPlayerWW> group = this.group.get(playerWW);
-                    if(group.size() + 1 > getGame().getGroup()) addToCompteur(playerWW, 1);
-                    if(group.size() + 1 <= getGame().getGroup()) removeFromCompteur(playerWW, 2);
-
-                    if(NoCamp.compteur.get(playerWW) >= getGame().getConfig().getValue(NoCamp.KEY + ".config.sendtitle")){
-                        if(!timer.get(playerWW)){
-                            Bukkit.getPlayer(playerWW.getUUID()).sendTitle("§cGroupe trop grand !", "§6Veuillez vous éloigner des autres joueurs");
-                            Sound.ANVIL_USE.play(playerWW);
-                            TextComponent text = new JsonMessageBuilder("§9Le joueur §b" + playerWW.getName() + " §9a reçu un avertissement du scénario NoCamp !")
-                                    .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent("§9Cliquez pour téléporter le joueur")}))
-                                    .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tp " + playerWW.getName()))
-                                    .build();
-                            getGame().getModerationManager().getModerators().forEach(uuid -> {
-                                Bukkit.getPlayer(uuid).spigot().sendMessage(text);
-                            });
-                            if(playerTitled.containsKey(playerWW)){
-                                playerTitled.replace(playerWW, playerTitled.get(playerWW) + 1);
-                            } else {
-                                playerTitled.put(playerWW, 1);
+            try{
+                if(!activate) return;
+                Bukkit.broadcastMessage( LGMSMain.getInstance().getPlayerAlive(getGame()).toString());
+                LGMSMain.getInstance().getPlayerAlive(getGame()).forEach(playerWW -> {
+                    if(Bukkit.getPlayer(playerWW.getUUID()) == null) return;
+                    if(!playerWW.isState(StatePlayer.ALIVE)) return;
+                    if((!Bukkit.getPlayer(playerWW.getUUID()).isSneaking() || !checkBlocksAbovePlayer(Bukkit.getPlayer(playerWW.getUUID()))) && !Bukkit.getPlayer(playerWW.getUUID()).hasPotionEffect(PotionEffectType.INVISIBILITY)){
+                        createGroupOfPlayer(playerWW, getGame().getConfig().getValue(NoCamp.KEY + ".config.rayon"));
+                        ArrayList<IPlayerWW> group = this.group.get(playerWW);
+                        if(group.size() + 1 > getGame().getGroup()) addToCompteur(playerWW, 1);
+                        if(group.size() + 1 <= getGame().getGroup()) removeFromCompteur(playerWW, 2);
+                        Bukkit.broadcastMessage("Compteur : " + NoCamp.compteur.get(playerWW) + " | config = " + getGame().getConfig().getValue(NoCamp.KEY + ".config.sendtitle"));
+                        if(NoCamp.compteur.get(playerWW) >= getGame().getConfig().getValue(NoCamp.KEY + ".config.sendtitle")){
+                            if(!timer.get(playerWW)){
+                                Bukkit.getPlayer(playerWW.getUUID()).sendTitle("§cGroupe trop grand !", "§6Veuillez vous éloigner des autres joueurs");
+                                Sound.ANVIL_USE.play(playerWW);
+                                TextComponent text = new JsonMessageBuilder("§9Le joueur §b" + playerWW.getName() + " §9a reçu un avertissement du scénario NoCamp !")
+                                        .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent("§9Cliquez pour téléporter le joueur")}))
+                                        .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tp " + playerWW.getName()))
+                                        .build();
+                                getGame().getModerationManager().getModerators().forEach(uuid -> {
+                                    Bukkit.getPlayer(uuid).spigot().sendMessage(text);
+                                });
+                                if(playerTitled.containsKey(playerWW)){
+                                    playerTitled.replace(playerWW, playerTitled.get(playerWW) + 1);
+                                } else {
+                                    playerTitled.put(playerWW, 1);
+                                }
+                                Random random = new Random();
+                                int intervalle = getGame().getConfig().getValue(NoCamp.KEY + ".config.intervalle");
+                                int timeMin = getGame().getConfig().getValue(NoCamp.KEY + ".config.timemin");
+                                int timeMax = intervalle + timeMin;
+                                GroupTeleport task = null;
+                                if(intervalle == 0){
+                                    task = new GroupTeleport(timeMin, playerWW, this);
+                                } else {
+                                    task = new GroupTeleport(random.nextInt(timeMax - timeMin) + timeMin, playerWW, this);
+                                }
+                                task.runTaskTimer(LGMSMain.getInstance(), 0, 20);
+                                tasks.add(task);
+                                timer.replace(playerWW, true);
                             }
-                            Random random = new Random();
-                            int intervalle = getGame().getConfig().getValue(NoCamp.KEY + ".config.intervalle");
-                            int timeMin = getGame().getConfig().getValue(NoCamp.KEY + ".config.timemin");
-                            int timeMax = intervalle + timeMin;
-                            GroupTeleport task = null;
-                            if(intervalle == 0){
-                                task = new GroupTeleport(timeMin, playerWW, this);
-                            } else {
-                                task = new GroupTeleport(random.nextInt(timeMax - timeMin) + timeMin, playerWW, this);
-                            }
-                            task.runTaskTimer(LGMSMain.getInstance(), 0, 20);
-                            tasks.add(task);
-                            timer.replace(playerWW, true);
                         }
                     }
-                }
-                if(Command100ms.devMode){
-                    Bukkit.broadcastMessage("§9" + playerWW.getName() + " §f: §b" + NoCamp.compteur.get(playerWW) + " §f| §b" + timer.get(playerWW) + " §f| §b" + group.get(playerWW).size());
-                }
-            });
+                    if(LGMSMain.getInstance().isDev()){
+                        Bukkit.broadcastMessage("§9" + playerWW.getName() + " §f: §b" + NoCamp.compteur.get(playerWW) + " §f| §b" + timer.get(playerWW) + " §f| §b" + group.get(playerWW).size());
+                    }
+                });
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }, 0, 20);
     }
 
@@ -164,7 +168,7 @@ public class NoCamp extends ListenerWerewolf {
 
     @EventHandler
     public void onGameStop(StopEvent e){
-        taskSecond.cancel();
+        if(taskSecond != null) taskSecond.cancel();
         tasks.forEach(GroupTeleport::cancel);
         if(getGame().getModerationManager().getModerators() != null) {
             for (UUID moderator : getGame().getModerationManager().getModerators()) {
@@ -217,11 +221,12 @@ public class NoCamp extends ListenerWerewolf {
         ArrayList<IPlayerWW> group = new ArrayList<>();
         Player bukkitPlayer = Bukkit.getPlayer(playerWW.getUUID());
         if(bukkitPlayer == null) return;
-        if(!bukkitPlayer.getNearbyEntities(rayon, rayon,rayon).isEmpty()){
-            bukkitPlayer.getNearbyEntities(rayon, rayon,rayon).forEach(entity -> {
+        List<Entity> nearby = bukkitPlayer.getNearbyEntities(rayon, rayon,rayon);
+        if(!nearby.isEmpty()){
+            nearby.forEach(entity -> {
                 if(entity == null) return;
                 if(entity instanceof Player){
-                    if(getGame().getPlayerWW(entity.getUniqueId()).get() == null) return;
+                    if(getGame().getPlayerWW(entity.getUniqueId()).isPresent()) return;
                     if(getGame().getPlayerWW(entity.getUniqueId()).get().isState(StatePlayer.JUDGEMENT)) return;
                     if((!((Player) entity).isSneaking() || !checkBlocksAbovePlayer((Player) entity)) && !(((Player) entity).hasPotionEffect(PotionEffectType.INVISIBILITY)) && ((Player) entity).getGameMode() == GameMode.SURVIVAL) {
                         getGame().getPlayerWW(entity.getUniqueId()).get();

@@ -42,6 +42,7 @@ public final class LGMSMain extends JavaPlugin implements Listener {
     public PlayerStatsUtils playerStatsUtils;
     private SkinsRestorer skinsRestorer;
     private GameStatsUtils gameStatsUtils;
+    private boolean dev = false;
     private final InventoryManager invManager = new InventoryManager(this);
     @Override
     public void onEnable() {
@@ -59,7 +60,6 @@ public final class LGMSMain extends JavaPlugin implements Listener {
             skinsRestorer = SkinsRestorerProvider.get();
         }
         getServer().getPluginManager().registerEvents(new AloneStatsListener(), this);
-        DatabaseManager.initAllDatabaseConnection();
         dbUtils = new DBUtils();
         gameStats = new GameStats();
         playerStatsUtils = new PlayerStatsUtils();
@@ -103,7 +103,7 @@ public final class LGMSMain extends JavaPlugin implements Listener {
 
     public ArrayList<IPlayerWW> getPlayerAlive(WereWolfAPI game){
         ArrayList<IPlayerWW> players = new ArrayList<>();
-        for(IPlayerWW playerWW :game.getPlayersWW()){
+        for(IPlayerWW playerWW : game.getPlayersWW()){
             if(playerWW.isState(StatePlayer.ALIVE)){
                 players.add(playerWW);
             }
@@ -125,5 +125,13 @@ public final class LGMSMain extends JavaPlugin implements Listener {
 
     public InventoryManager getInvManager() {
         return invManager;
+    }
+
+    public boolean isDev() {
+        return dev;
+    }
+
+    public void setDev(boolean dev) {
+        this.dev = dev;
     }
 }

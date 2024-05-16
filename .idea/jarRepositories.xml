@@ -49,6 +49,11 @@
     <remote-repository>
       <option name="id" value="Intelligence Repository-haoshoku" />
       <option name="name" value="Intelligence Repository" />
+      <option name="url" value="https://mvn.intelligence-modding.de/#/haoshoku" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Intelligence Repository-haoshoku" />
+      <option name="name" value="Intelligence Repository" />
       <option name="url" value="https://mvn.intelligence-modding.de/haoshoku" />
     </remote-repository>
   </component>

@@ -38,19 +38,19 @@ public class MainGui implements InventoryProvider {
 
         List<String> lore = new ArrayList<>();
         lore.add("");
-        lore.add(Command100ms.devMode ? "§aActivé" : "§cDésactivé");
+        lore.add(LGMSMain.getInstance().isDev() ? "§aActivé" : "§cDésactivé");
         contents.set(1, 7, ClickableItem.of(new ItemBuilder(UniversalMaterial.REDSTONE.getStack())
                 .setDisplayName("§9Dev Mode").setLore(lore)
-                .build(), e -> Command100ms.devMode = !Command100ms.devMode));
+                .build(), e -> LGMSMain.getInstance().setDev(!LGMSMain.instance.isDev())));
     }
 
     @Override
     public void update(Player player, InventoryContents contents) {
         List<String> lore = new ArrayList<>();
         lore.add("");
-        lore.add(Command100ms.devMode ? "§aActivé" : "§cDésactivé");
+        lore.add(LGMSMain.getInstance().isDev() ? "§aActivé" : "§cDésactivé");
         contents.set(1, 7, ClickableItem.of(new ItemBuilder(UniversalMaterial.REDSTONE.getStack())
                 .setDisplayName("§9Dev Mode").setLore(lore)
-                .build(), e -> Command100ms.devMode = !Command100ms.devMode));
+                .build(), e -> LGMSMain.getInstance().setDev(!LGMSMain.instance.isDev())));
     }
 }

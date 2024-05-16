@@ -1,6 +1,7 @@
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\statistic\GameStats.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\JsonMessageBuilder.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\LGMSMain.java
+E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\role\Baron.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\statistic\PlayerStatsUtils.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\statistic\GameStatsUtils.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\scenario\ExecuteCommandOnGameStop.java
@@ -8,10 +9,10 @@ E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\statistic\event\Alo
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\gui\AutoResizeGroupGui.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\database\DatabaseManager.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\database\DBUtils.java
-E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\role\DictateurRole.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\statistic\placeholder\ServerExpansion.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\role\BlackCat.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\commands\CommandDictator.java
+E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\lover\CursedLover.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\statistic\event\WereWolfStatsListener.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\scenario\NoCamp.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\task\GroupTeleport.java
@@ -22,6 +23,7 @@ E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\scenario\AutoResize
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\task\SkinTask.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\database\DatabaseCredentials.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\gui\ScenarioGui.java
+E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\role\Dictator.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\commands\admin\Command100ms.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\commands\CommandBlackCat.java
 E:\MinecraftDev\Other\LG100MS\src\main\java\fr\yanis\lg100ms\role\ChameleonWerewolf.java

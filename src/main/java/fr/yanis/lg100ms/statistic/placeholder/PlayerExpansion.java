@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 public class PlayerExpansion extends PlaceholderExpansion {
     @Override
     public @NotNull String getIdentifier() {
-        return "player";
+        return "100msplayer";
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 public class ServerExpansion extends PlaceholderExpansion {
     @Override
     public @NotNull String getIdentifier() {
-        return "server";
+        return "100msserver";
     }
 
     @Override

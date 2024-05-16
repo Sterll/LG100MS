@@ -18,7 +18,6 @@ import java.util.HashMap;
         moderatorAccess = true)
 public class Command100ms implements ICommand {
     public static final String KEY = LGMSMain.KEY + ".command.main";
-    public static boolean devMode = false;
 
     @Override
     public void execute(WereWolfAPI wereWolfAPI, Player player, String[] strings) {

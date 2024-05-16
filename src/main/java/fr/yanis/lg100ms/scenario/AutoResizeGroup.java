@@ -14,6 +14,7 @@ import fr.yanis.lg100ms.LGMSMain;
 import fr.yanis.lg100ms.commands.admin.Command100ms;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -61,8 +62,8 @@ public class AutoResizeGroup extends ListenerWerewolf {
     }
 
     @EventHandler
-    public void onKill(PlayerWWKillEvent e){
-        if(Command100ms.devMode){
+    public void onKill(PlayerDeathEvent e){
+        if(LGMSMain.getInstance().isDev()){
             getGame().setGroup(1);
         }
     }
@@ -81,7 +82,7 @@ public class AutoResizeGroup extends ListenerWerewolf {
         percentageVillager = (int) checkPercentage(Camp.VILLAGER);
         percentageWerewolf = (int) checkPercentage(Camp.WEREWOLF);
         percentageNeutral = (int) checkPercentage(Camp.NEUTRAL);
-        if(Command100ms.devMode){
+        if(LGMSMain.getInstance().isDev()){
             Bukkit.broadcastMessage("§c[DEBUG] §7Vérification du groupe en cours...");
             Bukkit.broadcastMessage("§c[DEBUG] §7Joueurs en vie: " + LGMSMain.getInstance().getPlayerAlive(getGame()).size());
             Bukkit.broadcastMessage("§c[DEBUG] §7Pourcentage de villageois: " + percentageVillager);
